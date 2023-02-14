@@ -22,14 +22,17 @@ function App() {
     }, p1, p2);
 
     const val = React.createRef();
-    const [out, setOut] = useState();
+    const [out, setOut] = useState([]);
 
     function value() {
-        let val_1 = val.current.value;
-        
-        setOut(val_1)
+
+
+        let value = val.current.value;
+        let arr = [...out, value]
+        setOut(arr);
+        if (value !== '') return value;
         val.current.value = '';
-        if (val_1 !== '') return setOut(val_1); 
+        
     }
 
     console.log(out)
@@ -45,7 +48,7 @@ function App() {
                 <button onClick={value}>Push</button>
             </div>
             <ul>
-                {out}
+                {out.map((item,index) => <li key={index.toString()}>{ item}</li>)}
                 </ul>
         </>
     )
