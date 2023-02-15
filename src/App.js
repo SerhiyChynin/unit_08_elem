@@ -30,7 +30,6 @@ function App() {
         let value = val.current.value;
         let arr = [...out, value]
         setOut(arr);
-        if (value !== '') return value;
         val.current.value = '';
         
     }
@@ -48,7 +47,7 @@ function App() {
                 <button onClick={value}>Push</button>
             </div>
             <ul>
-                {out.map((item,index) => <li key={index.toString()}>{ item}</li>)}
+                {out.map((item, index) => item !==''&& item !==' ' ? <li key={index.toString()}>{item}</li> : '') }
                 </ul>
         </>
     )
